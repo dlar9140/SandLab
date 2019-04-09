@@ -40,7 +40,7 @@ public class SandLab
   private void locationClicked(int row, int col, int tool)
   {
     //2. Assign the values associated with the parameters to the grid
-	  
+	  grid[row][col] = tool;
    
   }
 
