@@ -8,6 +8,7 @@ public class SandLab
   public static final int EMPTY = 0;
   public static final int METAL = 1;
   public static final int SAND = 2;
+  public static final int WATER = 3;
   
   //do not add any more fields below
   private int[][] grid;
@@ -24,11 +25,12 @@ public class SandLab
     String[] names;
     // Change this value to add more buttons
     //Step 4,6
-    names = new String[3];
+    names = new String[4];
     // Each value needs a name for the button
     names[EMPTY] = "Empty";
     names[METAL] = "Metal";
     names[SAND] = "Sand";
+    names[WATER] = "Water";
     
     //1. Add code to initialize the data member grid with same dimensions
     
@@ -64,6 +66,11 @@ public class SandLab
 			 {
 				 display.setColor(row, col, Color.yellow);
 			 }
+			 
+			 else if (grid[row][col] == 3)
+			 {
+				 display.setColor(row, col, Color.blue);
+			 }
 			 else display.setColor(row, col, Color.black);
 		 }
 	 }
@@ -79,6 +86,18 @@ public class SandLab
     //The scalar refers to how big the value could be
     //int someRandom = (int) (Math.random() * scalar)
     //remember that you need to watch for the edges of the array
+    int randomRow = (int)(Math.random() *grid.length);
+    int randomCol = (int)(Math.random() *grid[0].length);
+    if(grid[randomRow][randomCol] == SAND) 
+    {
+    	if(randomRow + 1 < grid.length && grid[randomRow + 1][randomCol] != METAL)
+    	{
+    		int temp = grid[randomRow + 1][randomCol];
+    		grid[randomRow + 1][randomCol] = SAND;
+    		grid[randomRow][randomCol] = temp;
+    	}
+    		
+    }
     
     
   }
